@@ -1,0 +1,2 @@
+# shared PHP code: included by the API files, never opened directly
+Require all denied
