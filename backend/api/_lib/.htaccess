@@ -1,2 +1,2 @@
-# shared PHP code: included by the API files, never opened directly
+# shared code: never served
 Require all denied

@@ -1,26 +1,74 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * Colours and fonts of the PHP site's admin pages (assets/css/style.css and
+ * bootstrap.css). Use them as Tailwind classes, e.g. bg-navy-800,
+ * text-ink-soft, font-heading.
+ */
+@theme {
+  --color-brand-50: #e6f6fc;
+  --color-brand-100: #ccedf8;
+  --color-brand-200: #99dbf1;
+  --color-brand-300: #5fc5e8;
+  --color-brand-400: #29b1df;
+  --color-brand-500: #01a0d8;
+  --color-brand-600: #0188b8;
+  --color-brand-700: #016d93;
+  --color-brand-800: #045671;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-accent-100: #fff3cc;
+  --color-accent-400: #fbc633;
+  --color-accent-500: #f8b600;
+  --color-accent-600: #d49a00;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-navy-600: #3a5670;
+  --color-navy-700: #2e4960;
+  --color-navy-800: #253d52;
+  --color-navy-900: #1b2e3f;
+
+  /* text: headings, body, table cells, captions */
+  --color-ink: #2a2b33;
+  --color-ink-body: #636363;
+  --color-ink-soft: #929292;
+  --color-ink-faint: #989fa2;
+
+  /* admin frame */
+  --color-page: #e3e8ea; /* content background, menu dividers */
+  --color-line: #eaedef; /* tile and table borders */
+  --color-menu-hover: #57666d;
+  --color-link: #13addb; /* Back button, menu counts */
+  --color-search: #1779d3;
+
+  /* the PHP pages' Bootstrap 3 labels and buttons */
+  --color-label-info: #5bc0de;
+  --color-label-success: #5cb85c;
+  --color-label-danger: #d9534f;
+  --color-label-warning: #f0ad4e;
+  --color-label-primary: #337ab7;
+  --color-edit: #263a78;
+  --color-delete: #ef0b0b;
+
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-quicksand), var(--font-poppins), sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-white text-ink-body;
+}
+
+/* horizontal lists (Carousel) scroll without a visible bar */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
