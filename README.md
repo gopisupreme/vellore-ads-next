@@ -8,14 +8,16 @@ vellore-ads PHP site.
 ```
 src/
   app/                 pages: / (home), /login, /register, /forgot-password, /reset-password,
-                       /verify-email, /admin, /admin/soon
+                       /verify-email, /admin (+ /connect/dashboard), /users/dashboard (business owner),
+                       /customer/dashboard, /recruiter/dashboard; each dashboard has a soon/ page
   components/ui/       reusable pieces: Card, DataTable, StatTile, Badge, ConfirmDialog, Breadcrumbs, Button ...
   components/layout/   DashboardShell (top bar + side menu), shared by every role's dashboard
   components/admin/    the admin pages' content
+  components/member/   the business owner, customer and recruiter dashboards (MemberShell = their frame)
   components/site/     the public site: layout/ (sticky header, footer, search), home/ (home page sections),
                        auth/ (sign in, register, password pages), ui/
   components/auth/     RequireAuth, LoginForm
-  config/              adminMenu.js (side menu; items without href open /admin/soon), roles.js
+  config/              adminMenu.js, memberMenus.js (side menus; items without href open soon/), roles.js
   config/site/         the public pages' fixed content (home.js) and link lists taken from the PHP templates
   lib/siteLinks.js     links into the PHP site's pages (listings, categories, blog ...)
   hooks/               useSession, useSite
@@ -58,6 +60,9 @@ Sign in at http://localhost:3000/login with an admin account from the `users` ta
 | `GET api/home.php` | home page: ads, theatres, news, service counts, trending listings, videos, attractions |
 | `GET api/search/suggest.php?type=title\|city&q=` | search suggestions |
 | `POST api/quick-request.php` | `{name, mobile, email, service}` -> quick_service, emails via SMTP_* settings |
+| `GET api/member/owner-dashboard.php` | business owner: counts, 5 newest listings and posts (with payment and plan) |
+| `GET api/member/customer-dashboard.php` | customer: account details and missing profile fields |
+| `GET api/member/recruiter-dashboard.php` | recruiter: job counts and the 4 newest jobs |
 | `GET api/admin/menu-counts.php` | numbers beside the admin menu links |
 | `GET api/admin/dashboard.php` | `{stats, topListings}`: the 10 counters and the 100 most viewed listings |
 | `POST api/admin/listing-toggle.php` | `{id, field}` switches `status`, `verified`, `trusted` or `plan` (free/gold) |

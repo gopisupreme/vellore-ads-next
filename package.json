@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -k -n php,next -c blue,green \"php -S 127.0.0.1:8000 -t backend\" \"next dev\"",
+    "dev": "concurrently -k -n php,next -c blue,green \"npm:dev:api\" \"next dev\"",
+    "dev:api": "php -d xdebug.mode=debug -d xdebug.start_with_request=yes -d xdebug.client_port=9003 -d xdebug.log_level=0 -S 127.0.0.1:8000 -t backend",
     "build": "next build && node tools/package.mjs",
     "lint": "eslint"
   },

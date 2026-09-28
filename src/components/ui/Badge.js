@@ -4,6 +4,7 @@ const TONES = {
   danger: 'bg-label-danger',
   warning: 'bg-label-warning',
   primary: 'bg-label-primary',
+  muted: 'bg-[#777]',
 };
 
 /**

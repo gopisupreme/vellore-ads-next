@@ -1,0 +1,25 @@
+{
+  // PHP API debugging with Xdebug: start `npm run dev`, choose "Debug PHP API"
+  // (F5), set a breakpoint in backend/api/*.php and open the page that calls it.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug PHP API",
+      "type": "php",
+      "request": "launch",
+      "port": 9003,
+      "pathMappings": {
+        "${workspaceFolder}/backend": "${workspaceFolder}/backend"
+      }
+    },
+    {
+      "name": "Debug current PHP file (CLI)",
+      "type": "php",
+      "request": "launch",
+      "program": "${file}",
+      "cwd": "${fileDirname}",
+      "port": 0,
+      "runtimeArgs": ["-dxdebug.mode=debug", "-dxdebug.start_with_request=yes"]
+    }
+  ]
+}

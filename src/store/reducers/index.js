@@ -6,6 +6,7 @@ import dashboard from './dashboardSlice';
 import enquiry from './enquirySlice';
 import home from './homeSlice';
 import layout from './layoutSlice';
+import member from './memberSlice';
 import site from './siteSlice';
 
 /** Add each new slice's reducer here. */
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   enquiry,
   home,
   layout,
+  member,
   site,
 });
 

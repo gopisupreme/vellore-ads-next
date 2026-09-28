@@ -108,3 +108,17 @@ export async function resetPassword({ token, password, confirmPassword }) {
   const { data } = await api.post('auth/reset-password.php', { token, password, confirmPassword });
   return data;
 }
+
+/* members' dashboards (api/member/*.php) */
+
+const MEMBER_DASHBOARDS = {
+  owner: 'member/owner-dashboard.php',
+  customer: 'member/customer-dashboard.php',
+  recruiter: 'member/recruiter-dashboard.php',
+};
+
+/** A member's dashboard data; kind is owner, customer or recruiter. */
+export async function getMemberDashboard(kind) {
+  const { data } = await api.get(MEMBER_DASHBOARDS[kind]);
+  return data;
+}

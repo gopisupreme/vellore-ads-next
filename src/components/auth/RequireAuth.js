@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import useSession from '@/hooks/useSession';
 import { logoutRequested } from '@/store/reducers/authSlice';
-import { roleLabel } from '@/config/roles';
+import Link from 'next/link';
+import { homeFor, roleLabel } from '@/config/roles';
 import { Button, Card, Icon } from '@/components/ui';
 import FullPageSpinner from './FullPageSpinner';
 
@@ -34,9 +35,16 @@ export default function RequireAuth({ roles, children }) {
             You are signed in as {user.name} ({roleLabel(user.role)}). This dashboard is only for{' '}
             {roles.map(roleLabel).join(', ').toLowerCase()} accounts.
           </p>
-          <Button className="mt-6" onClick={() => dispatch(logoutRequested())}>
-            Sign out
-          </Button>
+          <div className="mt-6 flex justify-center gap-2">
+            {homeFor(user.role) && (
+              <Link href={homeFor(user.role)} className="inline-flex h-10 items-center rounded-lg bg-brand-500 px-4 text-sm font-medium text-white hover:bg-brand-600">
+                My dashboard
+              </Link>
+            )}
+            <Button variant="secondary" onClick={() => dispatch(logoutRequested())}>
+              Sign out
+            </Button>
+          </div>
         </Card>
       </div>
     );

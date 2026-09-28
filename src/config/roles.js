@@ -5,9 +5,9 @@
  */
 export const ROLES = {
   admin: { label: 'Administrator', home: '/admin/', php: 'connect/dashboard' },
-  listing: { label: 'Business owner', home: null, php: 'users/dashboard' },
-  customer: { label: 'Customer', home: null, php: 'customer/dashboard' },
-  recruiter: { label: 'Recruiter', home: null, php: 'recruiter/dashboard' },
+  listing: { label: 'Business owner', home: '/users/dashboard/', php: 'users/dashboard' },
+  customer: { label: 'Customer', home: '/customer/dashboard/', php: 'customer/dashboard' },
+  recruiter: { label: 'Recruiter', home: '/recruiter/dashboard/', php: 'recruiter/dashboard' },
 };
 
 export function roleLabel(role) {

@@ -8,8 +8,11 @@ import { ADMIN_HOME } from '@/config/adminMenu';
 // only PHP site paths such as "connect/all_users" are linked
 const SAFE_PATH = /^[a-z0-9_/-]+$/i;
 
-/** An admin page that is still on the PHP site: says so and links to it. */
-export default function PendingPage() {
+/**
+ * A dashboard page that is still on the PHP site (?page=&title=): says so and
+ * links to it. `homeHref` is the dashboard the breadcrumb goes back to.
+ */
+export default function PendingPage({ homeHref = ADMIN_HOME }) {
   const params = useSearchParams();
   const site = useSite();
   const title = params.get('title') || 'Page';
@@ -18,7 +21,7 @@ export default function PendingPage() {
 
   return (
     <>
-      <Breadcrumbs homeHref={ADMIN_HOME} current={title} />
+      <Breadcrumbs homeHref={homeHref} current={title} />
       <Card title={title} bodyClassName="flex flex-col items-center px-6 py-14 text-center">
         <Icon name="wrench" className="text-4xl text-link" />
         <p className="mt-4 font-heading text-xl font-bold text-ink">This page is being moved to the new dashboard</p>

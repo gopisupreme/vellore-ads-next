@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import PendingPage from '@/components/admin/PendingPage';
+import PendingPage from '@/components/layout/PendingPage';
 
 export const metadata = { title: 'Being moved' };
 
