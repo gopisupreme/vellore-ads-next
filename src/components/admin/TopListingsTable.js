@@ -3,6 +3,7 @@
 import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Alert, Badge, ConfirmDialog, DataTable, Icon, Spinner } from '@/components/ui';
+import { formatDate } from '@/lib/format';
 import {
   actionErrorDismissed,
   listingDeleteRequested,
@@ -11,14 +12,6 @@ import {
 } from '@/store/reducers/dashboardSlice';
 
 const SWITCHABLE_PLANS = ['free', 'gold'];
-
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-/** "2020-07-31" -> "31 Jul 2020", as the PHP page's date("d M Y") */
-function formatDate(isoDate) {
-  const [year, month, day] = String(isoDate ?? '').split('-');
-  return year && month && day ? `${day} ${MONTHS[Number(month) - 1]} ${year}` : '';
-}
 
 /** What each confirmation asks (the PHP page's confirm() texts). */
 function confirmText(pending) {
